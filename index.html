@@ -14,29 +14,30 @@
     <h1>Grammar Adventure</h1>
     <p>Ms. Samar Gomaa • Grade 1</p>
   </div>
-  <div class="hub-stats"><span>⭐ <b id="totalGames">1</b></span><small>GAME AVAILABLE</small></div>
+  <div class="hub-stats"><span>⭐ <b id="totalGames">2</b></span><small>GAMES AVAILABLE</small></div>
 </header>
 <main class="hub-main">
   <section class="welcome">
     <div>
       <span class="eyebrow">🎮 MY LEARNING GAMES</span>
       <h2>Choose a game and start your adventure!</h2>
-      <p>New games will appear here automatically when they are added to the platform.</p>
+      <p>Pick a game below and learn while you play.</p>
     </div>
     <div class="hero-character">🧒⭐</div>
   </section>
   <section class="games-section">
-    <div class="section-title"><h3>Available Games</h3><span id="gameCount">1 game</span></div>
+    <div class="section-title"><h3>Available Games</h3><span id="gameCount">2 games</span></div>
     <div id="gamesGrid" class="games-grid"></div>
   </section>
 </main>
 <footer>🌟 Keep learning • Keep playing • Keep growing! 🌟</footer>
 <script>
 const games = [
-  { title:'Capital Letter Maze', subtitle:'Days & Months', grade:'Grade 1', icon:'🔤', color:'purple', href:'games/capital-letter-maze/' }
+  { title:'Capital Letter Maze', subtitle:'Days & Months', grade:'Grade 1', icon:'🔤', color:'purple', href:'games/capital-letter-maze/' },
+  { title:'Noun Jewel Heist', subtitle:'Singular & Plural Nouns', grade:'Grade 1', icon:'💎', color:'purple', href:'games/noun-jewel-heist/' }
 ];
 const grid=document.getElementById('gamesGrid');
-grid.innerHTML=games.map((game,i)=>`<a class="game-card ${game.color}" href="${game.href}"><div class="game-icon">${game.icon}</div><div class="game-info"><span class="available">● AVAILABLE</span><h4>${game.title}</h4><p>${game.subtitle}</p><span class="grade">${game.grade}</span></div><div class="play">PLAY <span>→</span></div></a>`).join('');
+grid.innerHTML=games.map(game=>`<a class="game-card ${game.color}" href="${game.href}"><div class="game-icon">${game.icon}</div><div class="game-info"><span class="available">● AVAILABLE</span><h4>${game.title}</h4><p>${game.subtitle}</p><span class="grade">${game.grade}</span></div><div class="play">PLAY <span>→</span></div></a>`).join('');
 document.getElementById('totalGames').textContent=games.length;
 document.getElementById('gameCount').textContent=`${games.length} ${games.length===1?'game':'games'}`;
 </script>
