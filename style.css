@@ -28,3 +28,47 @@ main{padding:20px 3vw}.game-shell{max-width:1480px;margin:auto;border:4px solid 
 .win-card{position:relative}.confetti{font-size:34px}.trophy{font-size:80px}.win-card h2{color:#7b40ad;font-size:40px;margin:0}.final-score{font-size:25px;font-weight:900;margin:14px}.stars{font-size:26px;margin:10px}.win-card button{font-size:18px;padding:14px 26px}
 @media(max-width:900px){.teacher-title{position:static;transform:none;order:3;width:100%;padding-top:4px}.top{flex-wrap:wrap;justify-content:center;gap:6px}.brand{margin-right:auto}.hud{margin-left:auto}.bottom{flex-wrap:wrap;justify-content:center}.hint{flex-basis:100%;text-align:center}.actions{width:100%;justify-content:center}}
 @media(max-width:600px){.top{height:auto;min-height:78px}.brand p{display:none}.hud{gap:3px}.hud div{padding:7px;font-size:13px}.scene{min-height:520px}.maze{left:2%;right:2%;top:29%;bottom:13%;gap:2px}.message{font-size:11px}.answers{grid-template-columns:1fr}.sign{display:none}.guide{font-size:42px}.letters{font-size:55px}}
+
+
+/* Mobile-first game layout */
+html{width:100%;overflow-x:hidden}
+body{min-width:0}
+.game-shell{width:100%}
+@media(max-width:600px){
+  main{padding:8px 6px 12px}
+  .top{padding:8px 10px;min-height:74px}
+  .brand{gap:7px;min-width:0}
+  .badge{width:44px;height:44px;border-radius:13px;font-size:27px;box-shadow:0 4px #542b7c}
+  .brand h1{font-size:19px;white-space:nowrap}
+  .hud{width:100%;justify-content:center}
+  .hud div{padding:6px 9px;border-radius:12px;font-size:12px}
+  .hud small{font-size:7px}
+  .game-shell{border-width:3px;border-radius:20px}
+  .scene{height:clamp(430px,64vh,590px);min-height:430px}
+  .sky-decor{font-size:36px;top:7%;left:4%}
+  .cloud2{right:8%;top:12%}
+  .sun{font-size:43px;top:3%;right:2%}
+  .message{top:10%;max-width:88%;padding:8px 11px;font-size:10px;text-align:center;white-space:normal;line-height:1.2}
+  .maze{left:2.5%;right:2.5%;top:24%;bottom:11%;padding:5px;border-radius:18px}
+  .cell{font-size:clamp(8px,2.3vw,13px);border-radius:4px}
+  .player{font-size:30px}
+  .guide{right:1%;bottom:.5%;font-size:32px}
+  .guide span{font-size:8px;padding:3px 5px}
+  .bottom{min-height:0;padding:10px 8px;gap:8px}
+  .hint{font-size:11px;line-height:1.3;padding:0 3px}
+  .dpad{width:164px;height:92px;grid-template-columns:repeat(3,50px);grid-template-rows:43px 43px;gap:3px}
+  .move{width:48px;height:42px;border-radius:12px;font-size:17px}
+  .actions{display:grid;grid-template-columns:repeat(2,1fr);width:100%;gap:7px}
+  .actions button{padding:9px 7px;font-size:12px}
+  .modal{padding:10px}
+  .question-card,.win-card{width:min(94vw,520px);padding:18px 13px;border-width:4px;border-radius:22px}
+  .q-star{font-size:40px}
+  .question-card h2{font-size:21px;margin:10px 0 14px}
+  .answer{padding:12px 10px;font-size:16px}
+  .win-card h2{font-size:28px}
+  .trophy{font-size:58px}
+  .final-score{font-size:20px}
+}
+@media(min-width:601px) and (max-width:900px){
+  .scene{height:min(64vh,620px);min-height:470px}
+}
