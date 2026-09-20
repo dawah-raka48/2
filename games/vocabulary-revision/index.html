@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vocabulary Revision</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#071329;color:#fff;font-family:"Trebuchet MS",Arial,sans-serif}body{overflow-x:hidden}main{width:min(1280px,100%);margin:auto;padding:8px}.top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.title{font-size:clamp(24px,4vw,40px);font-weight:900}.title span{color:#ffd84d}.back,.stat,.soundBtn,.ctrl{background:#122552;border:2px solid #3c6bd6;color:#fff;border-radius:14px;font-weight:900}.back{padding:9px 13px;text-decoration:none}.stats{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}.stat{padding:7px 10px}.soundBtn{padding:8px 11px;cursor:pointer}.box{position:relative;margin-top:7px;border:5px solid #3153a4;border-radius:22px;overflow:hidden;background:#0b1730;box-shadow:0 15px 45px #0008}.box canvas{display:block;width:100%;height:auto;touch-action:none}.controls{display:flex;justify-content:center;gap:10px;padding:9px}.ctrl{width:74px;height:52px;font-size:25px;box-shadow:0 5px #071026;touch-action:none;cursor:pointer}.ctrl:active{transform:translateY(4px);box-shadow:0 1px #071026}.help{text-align:center;color:#cbd7f5;font-size:13px;font-weight:800;margin:2px}.modal{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#020817e8;padding:14px}.modal.show{display:flex}.card{width:min(680px,94%);background:#fff;color:#182346;border:5px solid #ffd84d;border-radius:25px;padding:22px;text-align:center;box-shadow:0 15px 45px #0009}.card h2{margin:0 0 8px;color:#6635b5}.context{background:#edf5ff;border-radius:15px;padding:12px;font-size:20px;font-weight:900;line-height:1.35}.target{color:#5b31c8;text-decoration:underline}.meaning{margin:12px 0 5px;font-weight:900}.answers{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}.answer,.restart{border:0;border-radius:15px;padding:14px;font-size:18px;font-weight:900;color:#fff;cursor:pointer}.answer:nth-child(1){background:#287be8}.answer:nth-child(2){background:#ef7b32}.answer:nth-child(3){background:#2dbb68}.answer:active,.restart:active{transform:translateY(3px)}.feedback{min-height:26px;margin-top:10px;font-weight:900}.restart{background:#7040b8;margin-top:8px}.small{font-weight:800;color:#68728b}.hint{background:#fff4c6;border-radius:12px;padding:8px;margin:9px 0;font-weight:800;color:#765200}@media(max-width:650px){.stats{width:100%;margin-left:0}.stat{font-size:12px}.ctrl{width:64px}.answers{grid-template-columns:1fr}.context{font-size:17px}}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+<div class="title">Vocabulary <span>Revision</span></div>
+<a class="back" href="../../">← Game Hub</a>
+<button class="soundBtn" id="soundBtn" type="button">🔊 Music</button>
+<div class="stats"><div class="stat">⭐ <b id="score">0</b></div><div class="stat">🏃 <b id="found">0</b>/12</div><div class="stat">❤️ <b id="lives">3</b></div><div class="stat">🧠 <b id="answered">0</b>/12</div></div>
+</header>
+<section class="box">
+<canvas id="game" width="1200" height="620"></canvas>
+<div class="modal" id="question">
+<div class="card">
+<h2>⚡ Vocabulary Challenge!</h2>
+<div class="hint">Use the context clues to choose the meaning of the highlighted word.</div>
+<div class="context" id="context"></div>
+<div class="meaning">What does <span class="target" id="word"></span> mean?</div>
+<div class="answers"><button class="answer" data-i="0" type="button"></button><button class="answer" data-i="1" type="button"></button><button class="answer" data-i="2" type="button"></button></div>
+<div class="feedback" id="feedback"></div>
+</div>
+</div>
+<div class="modal" id="pause"><div class="card"><h2>⏸ PAUSED</h2><p class="small">Ready to run again?</p><button class="restart" id="resume" type="button">▶ Resume</button></div></div>
+<div class="modal" id="end"><div class="card"><h2 id="endTitle">🏆 FINISH!</h2><p class="small" id="endText"></p><button class="restart" id="again" type="button">🔄 Play Again</button></div></div>
+</section>
+<div class="controls"><button class="ctrl" data-k="left" type="button">◀</button><button class="ctrl" data-k="jump" type="button">▲</button><button class="ctrl" data-k="right" type="button">▶</button><button class="ctrl" id="pauseBtn" type="button">⏸</button></div>
+<p class="help">← → / A D = Run • ↑ / W / Space = Jump • Collect 12 vocabulary stars • Answer every challenge • Reach the FINISH!</p>
+</main>
+<script>
+(function(){
+'use strict';
+const c=document.getElementById('game'),x=c.getContext('2d'),W=1200,H=620;
+const qs=[
+{w:'goal',sentence:'Kick the ball into the goal to score.',answer:'the place where you score',choices:['the place where you score','a person who drives a train','a storm in the sky']},
+{w:'goalie',sentence:'The goalie stopped the ball with his hands.',answer:'the player who protects the goal',choices:['the player who protects the goal','people watching a game','a place in outer space']},
+{w:'leader',sentence:'The children follow the leader in the game.',answer:'a person others follow',choices:['a person others follow','a train worker','a strong storm']},
+{w:'stands',sentence:'The people in the stands cheer for the team.',answer:'seats where people watch a game',choices:['seats where people watch a game','a train that is moving','a fancy dinner plate']},
+{w:'aboard',sentence:'We climbed aboard the train.',answer:'onto or into a vehicle',choices:['onto or into a vehicle','very expensive','bright lightning']},
+{w:'conductor',sentence:'The conductor tells when the train leaves.',answer:'a person who works on a train',choices:['a person who works on a train','a soccer player','a kind of ice storm']},
+{w:'fancy',sentence:'The table has fancy plates.',answer:'special and beautiful',choices:['special and beautiful','very loud','a place with stars']},
+{w:'space',sentence:'There are many stars in space.',answer:'the area beyond Earth',choices:['the area beyond Earth','the people in a stadium','a person on a train']},
+{w:'hail',sentence:'Icy hail fell during the storm.',answer:'small balls of ice that fall from the sky',choices:['small balls of ice that fall from the sky','a bright flash of light','a spinning storm']},
+{w:'lightning',sentence:'The lightning from the storm lit up the sky.',answer:'a bright flash of electricity in the sky',choices:['a bright flash of electricity in the sky','loud sound from a storm','a soccer goal']},
+{w:'thunder',sentence:'The thunder was so loud that it hurt my ears.',answer:'a loud sound during a storm',choices:['a loud sound during a storm','ice falling from the sky','a person who leads a team']},
+{w:'tornado',sentence:'The tornado destroyed everything in its path.',answer:'a powerful spinning column of air',choices:['a powerful spinning column of air','a train worker','a beautiful plate']}
+];
+let score=0,found=0,lives=3,answered=0,qi=0,paused=false,asking=false,ended=false,cam=0,musicOn=true,audio=null,musicTimer=null,lastStepX=70;
+let p,plats,stars,keys={left:false,right:false};
+const el=id=>document.getElementById(id);
+function stats(){el('score').textContent=score;el('found').textContent=found;el('lives').textContent=lives;el('answered').textContent=answered}
+function hide(){document.querySelectorAll('.modal').forEach(m=>m.classList.remove('show'))}
+function build(){p={x:70,y:455,w:42,h:60,vy:0,on:false,face:1,run:0};plats=[{x:0,y:515,w:700,h:42},{x:760,y:470,w:620,h:35},{x:1440,y:520,w:680,h:38},{x:2180,y:460,w:620,h:35},{x:2860,y:515,w:850,h:42},{x:3750,y:465,w:700,h:35},{x:4520,y:515,w:850,h:42}];const spots=[{x:300,y:475},{x:610,y:475},{x:900,y:430},{x:1190,y:430},{x:1540,y:480},{x:1830,y:480},{x:2300,y:420},{x:2600,y:420},{x:3050,y:475},{x:3400,y:475},{x:3900,y:425},{x:4250,y:425}];stars=spots.map((s,i)=>({x:s.x,y:s.y,got:false,id:i}))}
+function reset(){score=0;found=0;lives=3;answered=0;qi=0;paused=false;asking=false;ended=false;cam=0;hide();build();stats();lastStepX=p.x}
+function hit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
+function initAudio(){if(audio){if(audio.state==='suspended')audio.resume();return}try{audio=new(window.AudioContext||window.webkitAudioContext)();audio.resume()}catch(e){audio=null}}
+function tone(f,d,t='square',g=.06,delay=0){if(!audio||!musicOn)return;const o=audio.createOscillator(),v=audio.createGain();o.type=t;o.frequency.value=f;v.gain.setValueAtTime(.0001,audio.currentTime+delay);v.gain.exponentialRampToValueAtTime(g,audio.currentTime+delay+.008);v.gain.exponentialRampToValueAtTime(.0001,audio.currentTime+delay+d);o.connect(v);v.connect(audio.destination);o.start(audio.currentTime+delay);o.stop(audio.currentTime+delay+d+.03)}
+function step(){tone(170,.06,'square',.06);tone(110,.08,'triangle',.04,.05)}
+function jumpSound(){tone(350,.08,'square',.07);tone(560,.11,'square',.05,.07)}
+function starSound(){tone(700,.08,'triangle',.08);tone(900,.1,'triangle',.07,.08);tone(1100,.12,'sine',.05,.17)}
+function correct(){tone(523,.08,'square',.08);tone(659,.08,'square',.07,.09);tone(784,.14,'square',.07,.18)}
+function wrong(){tone(180,.15,'sawtooth',.07);tone(120,.18,'sawtooth',.05,.12)}
+function win(){[523,659,784,1047,1318].forEach((f,i)=>tone(f,.17,'triangle',.09,i*.1))}
+function startMusic(){if(!audio||!musicOn||musicTimer)return;let b=0;const m=[330,392,440,392,494,440,392,330];musicTimer=setInterval(()=>{if(!audio||!musicOn||paused||ended)return;tone(m[b%8],.16,'square',.045);if(b%2===0)tone(165,.12,'triangle',.025);b++},220)}
+function stopMusic(){if(musicTimer){clearInterval(musicTimer);musicTimer=null}}
+function toggle(){musicOn=!musicOn;el('soundBtn').textContent=musicOn?'🔊 Music':'🔇 Sound OFF';if(musicOn){initAudio();startMusic()}else stopMusic()}
+function jump(){initAudio();if(!paused&&!asking&&!ended&&p.on){p.vy=-13;p.on=false;jumpSound()}}
+function ask(){if(asking||ended)return;asking=true;paused=true;keys.left=false;keys.right=false;const q=qs[qi++%qs.length];el('word').textContent=q.w;el('context').innerHTML=q.sentence.replace(q.w,'<span class="target">'+q.w+'</span>');const btns=document.querySelectorAll('.answer');q.choices.forEach((v,i)=>btns[i].textContent=v);el('question').dataset.answer=q.answer;el('feedback').textContent='';el('question').classList.add('show');tone(780,.12,'sine',.06)}
+function answer(i){if(!asking)return;const q=qs[(qi-1)%qs.length],ok=q.choices[i]===q.answer;if(ok){score+=70;answered++;correct();el('feedback').textContent='🎉 Correct! +70 points';el('feedback').style.color='#168d49';setTimeout(()=>{el('question').classList.remove('show');asking=false;paused=false;stats();if(found===12&&answered===12)el('feedback').textContent=''},650)}else{lives--;wrong();stats();el('feedback').textContent=lives>0?'❌ Try again! -1 ❤️':'❌ No lives left. Try again!';el('feedback').style.color='#d43b61';if(lives<=0)setTimeout(()=>finish(false),850)}}
+function finish(winState){ended=true;paused=true;hide();if(winState)win();el('endTitle').textContent=winState?'🏆 VOCABULARY MASTER!':'💗 NICE TRY!';el('endText').textContent=winState?'You collected all 12 vocabulary stars, answered all 12 challenges, and reached the FINISH! Final score: '+score+' ⭐':'You collected '+found+' stars and answered '+answered+' challenges. Try again!';el('end').classList.add('show')}
+function update(){if(paused||asking||ended)return;const speed=6;const dx=(keys.right?speed:0)-(keys.left?speed:0);p.x+=dx;if(dx){p.face=dx>0?1:-1;if(Math.abs(p.x-lastStepX)>=55){step();lastStepX=p.x}}p.x=Math.max(0,Math.min(5200,p.x));p.vy+=.65;const old=p.y;p.y+=p.vy;p.on=false;for(const q of plats){if(p.x+p.w>q.x&&p.x<q.x+q.w&&old+p.h<=q.y&&p.y+p.h>=q.y&&p.vy>=0){p.y=q.y-p.h;p.vy=0;p.on=true}}if(p.y>H+80){p.x=Math.max(40,p.x-220);p.y=350;p.vy=0}for(const s of stars){if(!s.got&&hit(p,{x:s.x-18,y:s.y-18,w:36,h:36})){s.got=true;found++;score+=20;starSound();stats();ask();return}}if(found===12&&answered===12&&p.x>5150){finish(true);return}cam+=(Math.max(0,Math.min(4000,p.x-330))-cam)*.11;p.run+=Math.abs(dx)*.2}
+function star(s){const X=s.x-cam,Y=s.y;const r=18+Math.sin(performance.now()/180+s.x)*2;x.save();x.translate(X,Y);x.rotate(Math.PI/2);x.shadowBlur=20;x.shadowColor='#ffd84d';x.fillStyle='#ffd84d';x.beginPath();for(let i=0;i<10;i++){const a=i*Math.PI/5,rr=i%2?r:8;x.lineTo(Math.cos(a)*rr,Math.sin(a)*rr)}x.closePath();x.fill();x.shadowBlur=0;x.fillStyle='#fff7c2';x.beginPath();x.arc(-5,-5,4,0,Math.PI*2);x.fill();x.restore()}
+function player(){const X=p.x-cam,Y=p.y,bob=Math.sin(p.run)*3;x.save();x.translate(X+21,Y+30+bob);x.scale(p.face,1);x.fillStyle='rgba(0,0,0,.28)';x.beginPath();x.ellipse(0,35,25,6,0,0,Math.PI*2);x.fill();x.fillStyle='#f36b4a';x.beginPath();x.arc(0,-12,20,0,Math.PI*2);x.fill();x.fillStyle='#fff';x.fillRect(-13,-17,8,8);x.fillRect(5,-17,8,8);x.fillStyle='#1c2452';x.fillRect(-10,-15,4,5);x.fillRect(7,-15,4,5);x.fillStyle='#245de0';x.fillRect(-18,7,36,29);x.fillStyle='#f36b4a';x.fillRect(-22,12,7,22);x.fillRect(15,12,7,22);x.fillRect(-14,32,9,18+Math.sin(p.run)*4);x.fillRect(5,32,9,18-Math.sin(p.run)*4);x.fillStyle='#ffd84d';x.fillRect(-20,49,16,7);x.fillRect(5,49,16,7);x.restore()}
+function draw(){const bg=x.createLinearGradient(0,0,0,H);bg.addColorStop(0,'#58c7ef');bg.addColorStop(.58,'#b7efff');bg.addColorStop(.581,'#63c86b');bg.addColorStop(1,'#2e8f49');x.fillStyle=bg;x.fillRect(0,0,W,H);for(let i=0;i<16;i++){const bx=i*380-cam*.25;x.fillStyle='#86d7a2';x.beginPath();x.arc(bx+100,360,100,Math.PI,Math.PI*2);x.fill();x.fillStyle='#4aa86c';x.beginPath();x.arc(bx+230,390,120,Math.PI,Math.PI*2);x.fill()}for(let i=0;i<18;i++){const rx=(i*150-cam*.45)%W;x.fillStyle='#fff';x.globalAlpha=.7;x.beginPath();x.arc(rx,70+(i%4)*34,18,0,Math.PI*2);x.arc(rx+20,72+(i%4)*34,25,0,Math.PI*2);x.arc(rx+45,70+(i%4)*34,17,0,Math.PI*2);x.fill();x.globalAlpha=1}for(const q of plats){x.fillStyle='#6b4b35';x.fillRect(q.x-cam,q.y,q.w,q.h);x.fillStyle='#35b65c';x.fillRect(q.x-cam,q.y,q.w,8);for(let z=q.x+20;z<q.x+q.w;z+=42){x.fillStyle='#9c6a46';x.fillRect(z-cam,q.y+15,4,q.h-15)}}for(const s of stars)if(!s.got)star(s);const finishX=5220-cam;x.fillStyle='#f5f5f5';x.fillRect(finishX,390,8,120);x.fillStyle='#ffcf3f';x.beginPath();x.moveTo(finishX+8,395);x.lineTo(finishX+75,415);x.lineTo(finishX+8,435);x.closePath();x.fill();x.fillStyle='#fff';x.font='900 18px Arial';x.fillText(found===12&&answered===12?'FINISH!':'LOCKED',finishX-15,375);player();x.fillStyle='#12305e';x.font='900 22px Arial';x.fillText('Vocabulary Revision',20,32);x.font='bold 14px Arial';x.fillStyle='#1d5578';x.fillText('Run → collect a star → solve the context clue → keep running!',20,56);x.fillStyle='#fff';x.font='900 16px Arial';x.fillText('Stars left: '+(12-found),20,83)}
+function loop(){update();draw();requestAnimationFrame(loop)}
+function press(k,on){if(k==='left')keys.left=on;if(k==='right')keys.right=on;if(k==='jump'&&on)jump()}
+el('soundBtn').onclick=()=>{initAudio();toggle()};document.querySelectorAll('.answer').forEach(b=>b.onclick=()=>{initAudio();answer(Number(b.dataset.i))});el('again').onclick=()=>{initAudio();reset()};el('resume').onclick=()=>{paused=false;el('pause').classList.remove('show');startMusic()};el('pauseBtn').onclick=()=>{if(ended||asking)return;initAudio();paused=!paused;el('pause').classList.toggle('show',paused);if(paused)stopMusic();else startMusic()};document.querySelectorAll('.ctrl[data-k]').forEach(b=>{b.addEventListener('pointerdown',e=>{e.preventDefault();initAudio();press(b.dataset.k,true)});b.addEventListener('pointerup',e=>{e.preventDefault();if(b.dataset.k!=='jump')press(b.dataset.k,false)});b.addEventListener('pointercancel',()=>{if(b.dataset.k!=='jump')press(b.dataset.k,false)});b.addEventListener('pointerleave',()=>{if(b.dataset.k!=='jump')press(b.dataset.k,false)})});document.addEventListener('keydown',e=>{initAudio();const k=e.key.toLowerCase();if(['arrowleft','a'].includes(k)){keys.left=true;e.preventDefault()}if(['arrowright','d'].includes(k)){keys.right=true;e.preventDefault()}if(['arrowup','w',' '].includes(k)){jump();e.preventDefault()}if(k==='p')el('pauseBtn').click()});document.addEventListener('keyup',e=>{const k=e.key.toLowerCase();if(['arrowleft','a'].includes(k))keys.left=false;if(['arrowright','d'].includes(k))keys.right=false});reset();loop();
+})();
+</script>
+</body>
+</html>
