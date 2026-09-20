@@ -34,7 +34,8 @@
 <script>
 const games = [
   { title:'Capital Letter Maze', subtitle:'Days & Months', grade:'Grade 1', icon:'🔤', color:'purple', href:'games/capital-letter-maze/' },
-  { title:'Singular and plural', subtitle:'Grammar Adventure', grade:'Grade 1', icon:'💎', color:'purple', href:'games/noun-jewel-heist/' }
+  { title:'Singular and plural', subtitle:'Grammar Adventure', grade:'Grade 1', icon:'💎', color:'purple', href:'games/noun-jewel-heist/' },
+  { title:'Vocabulary Revision', subtitle:'Context Clues', grade:'Grade 1', icon:'⚡', color:'purple', href:'games/vocabulary-revision/' }
 ];
 const grid=document.getElementById('gamesGrid');
 grid.innerHTML=games.map(game=>`<a class="game-card ${game.color}" href="${game.href}"><div class="game-icon">${game.icon}</div><div class="game-info"><span class="available">● AVAILABLE</span><h4>${game.title}</h4><p>${game.subtitle}</p><span class="grade">${game.grade}</span></div><div class="play">PLAY <span>→</span></div></a>`).join('');
