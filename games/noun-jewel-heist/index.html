@@ -8,6 +8,39 @@
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#080617,#24103f);color:#fff;font-family:"Trebuchet MS",Arial,sans-serif}main{width:min(1150px,100%);margin:auto;padding:10px}.top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.title{font-size:clamp(22px,4vw,36px);font-weight:900}.title span{color:#69eaff}.back,.stat,.ctrl,.soundBtn{background:#21154a;border:2px solid #684fd0;color:#fff;border-radius:14px;font-weight:900}.back{padding:9px 13px;text-decoration:none}.stats{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}.stat{padding:7px 10px}.soundBtn{padding:8px 11px;cursor:pointer}.box{position:relative;margin-top:8px;border:5px solid #5533b2;border-radius:25px;overflow:hidden;background:#100923;box-shadow:0 15px 45px #0008}.box canvas{display:block;width:100%;height:auto;touch-action:none}.controls{display:flex;justify-content:center;gap:10px;padding:10px}.ctrl{width:72px;height:54px;font-size:26px;box-shadow:0 5px #140b32;touch-action:none;cursor:pointer}.ctrl:active{transform:translateY(4px);box-shadow:0 1px #140b32}.help{text-align:center;color:#cfc6ef;font-size:14px;font-weight:800;margin:2px 0}.modal{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#05030ddd;padding:15px}.modal.show{display:flex}.card{width:min(640px,94%);background:#fff;color:#211c48;border:5px solid #69eaff;border-radius:25px;padding:24px;text-align:center;box-shadow:0 15px 40px #0008}.card h2{margin:0 0 8px;color:#7225a4}.word{font-size:clamp(42px,9vw,70px);font-weight:900;color:#172080;margin:16px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:12px}.answer,.restart{border:0;border-radius:16px;padding:15px;font-size:20px;font-weight:900;color:#fff;cursor:pointer}.answer:first-child{background:#277de5;box-shadow:0 5px #174f9d}.answer:last-child{background:#28b95c;box-shadow:0 5px #167d3e}.answer:active,.restart:active{transform:translateY(3px)}.feedback{min-height:28px;margin-top:12px;font-weight:900}.restart{background:#7a40b2}.small{font-weight:800;color:#665f7e}.hint{background:#f1eaff;border-radius:12px;padding:9px;margin:10px 0;font-weight:800;color:#5d3987}.soundHint{position:absolute;left:18px;bottom:16px;background:#17102fdd;border:2px solid #6049a8;border-radius:12px;padding:7px 10px;font-size:12px;font-weight:900;color:#e9e2ff;pointer-events:none}@media(max-width:600px){main{padding:6px}.stats{width:100%;margin-left:0}.stat{font-size:12px}.ctrl{width:64px;height:50px}.help{font-size:12px}.soundHint{font-size:10px}}
 </style>
 <link rel="manifest" href="../../manifest.json"><meta name="theme-color" content="#713baa"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Grammar Adventure">
+<style>
+/* Responsive layout for phones and tablets */
+html,body{width:100%;overflow-x:hidden}
+main{width:min(1150px,100%);padding:clamp(6px,1.5vw,14px)}
+.box{width:100%}
+.box canvas{width:100%;height:auto;aspect-ratio:1100/620;max-height:calc(100vh - 170px);object-fit:contain}
+.controls{flex-wrap:wrap}
+@media(max-width:600px){
+  .top{display:grid;grid-template-columns:1fr auto;gap:6px}
+  .title{font-size:22px;line-height:1.05}
+  .back{order:2;padding:7px 9px;font-size:12px}
+  .soundBtn{grid-column:1/-1;width:100%;padding:7px;font-size:12px}
+  .stats{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);width:100%;gap:4px;margin:0}
+  .stat{padding:6px 4px;font-size:11px;text-align:center}
+  .box{margin-top:5px;border-width:3px;border-radius:18px}
+  .box canvas{max-height:none}
+  .controls{gap:7px;padding:8px 2px}
+  .ctrl{flex:1;min-width:56px;max-width:86px;height:48px;border-radius:13px;font-size:22px}
+  .help{font-size:10px;line-height:1.35;margin:2px 5px}
+  .soundHint{left:8px;right:8px;bottom:8px;text-align:center;font-size:10px}
+  .modal{position:absolute;padding:8px}
+  .card{width:94%;padding:16px 11px;border-width:3px;border-radius:18px}
+  .card h2{font-size:20px}
+  .word{font-size:clamp(38px,13vw,58px);margin:10px}
+  .answers{grid-template-columns:1fr;gap:8px}
+  .answer,.restart{padding:12px 10px;font-size:17px}
+  .hint{font-size:12px;line-height:1.35}
+}
+@media(min-width:601px) and (max-width:900px){
+  .box canvas{max-height:calc(100vh - 180px)}
+  .controls{padding:8px}
+}
+</style>
 </head>
 <body>
 <main>
