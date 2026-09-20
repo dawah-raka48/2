@@ -101,6 +101,7 @@ function buildHero(){
  legL.rotation.x=.05;legR.rotation.x=-.05;hero.add(legL,legR);
  hero.userData.anim={armL,armR,legL,legR};
  hero.position.set(0,jumpY,2.8);
+ hero.rotation.y=Math.PI;
  scene.add(hero);
 }
 function addRing(z,l){const r=new THREE.Mesh(new THREE.TorusGeometry(.55,.14,12,28),mat(0xffd52e,.25,.65));r.position.set(l*2.35,1.45,z);r.rotation.y=Math.PI/2;r.userData={hit:false};scene.add(r);ringObjects.push(r)}
