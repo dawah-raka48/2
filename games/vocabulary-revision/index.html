@@ -224,7 +224,7 @@ function finish(win){ended=true;paused=true;stopMusic();E('endTitle').textConten
 function move(dir){targetLane=Math.max(-1,Math.min(1,targetLane+dir));audioInit();tone(240,.05,'square',.035)}
 function jump(){if(asking||ended||paused||jumpY>0)return;audioInit();jumpV=.25;tone(430,.08,'square',.05)}
 function reset(){score=0;rings=0;lives=3;done=0;qi=0;paused=false;asking=false;ended=false;stats();E('question').classList.remove('show');E('end').classList.remove('show');resetWorld()}
-function loop(){requestAnimationFrame(loop);if(!paused&&!asking&&!ended){const moving=moveKeys.forward||moveKeys.back||moveKeys.left||moveKeys.right;speed=moving?Math.min(.62,speed+.018):Math.max(0,speed-.035);runT+=speed*2.2;worldZ+=speed;lane+=(targetLane-lane)*.18;jumpV-=.014;jumpY+=jumpV;if(jumpY<0){jumpY=0;jumpV=0}hero.position.x=lane*2.35;hero.position.y=jumpY;hero.rotation.z=(targetLane-lane)*.12;hero.rotation.y=Math.sin(runT)*.025;heroArt.style.display='none';
+function loop(){requestAnimationFrame(loop);if(!paused&&!asking&&!ended){const moving=moveKeys.forward||moveKeys.back||moveKeys.left||moveKeys.right;speed=moving?Math.min(.62,speed+.018):Math.max(0,speed-.035);runT+=speed*2.2;worldZ+=speed;lane+=(targetLane-lane)*.18;jumpV-=.014;jumpY+=jumpV;if(jumpY<0){jumpY=0;jumpV=0}hero.position.x=lane*2.35;hero.position.y=jumpY;hero.rotation.z=(targetLane-lane)*.12;hero.rotation.y=Math.PI+Math.sin(runT)*.025;heroArt.style.display='none';
 heroArt.style.left=(50+lane*13)+'%';
 heroArt.style.bottom=(7+jumpY*4)+'%';
 const runCycle=Math.sin(runT*3.4);
