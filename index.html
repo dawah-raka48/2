@@ -21,7 +21,7 @@
     <h1>Grammar Adventure</h1>
     <p>Ms. Samar Gomaa • Grade 1</p>
   </div>
-  <div class="hub-actions"><button id="installBtn" class="install-btn" type="button">📲 تثبيت التطبيق</button><div class="hub-stats"><span>⭐ <b id="totalGames">2</b></span><small>GAMES AVAILABLE</small></div></div>
+  <div class="hub-actions"><button id="installBtn" class="install-btn" type="button">📲 تثبيت التطبيق</button><div class="hub-stats"><span>⭐ <b id="totalGames">4</b></span><small>GAMES AVAILABLE</small></div></div>
 </header>
 <main class="hub-main">
   <section class="welcome">
@@ -33,7 +33,7 @@
     <div class="hero-character">🧒⭐</div>
   </section>
   <section class="games-section">
-    <div class="section-title"><h3>Available Games</h3><span id="gameCount">2 games</span></div>
+    <div class="section-title"><h3>Available Games</h3><span id="gameCount">4 games</span></div>
     <div id="gamesGrid" class="games-grid"></div>
   </section>
 </main>
@@ -51,7 +51,8 @@
 const games = [
   { title:'Capital Letter Maze', subtitle:'Days & Months', grade:'Grade 1', icon:'🔤', color:'purple', href:'games/capital-letter-maze/' },
   { title:'Singular and plural', subtitle:'Grammar Adventure', grade:'Grade 1', icon:'💎', color:'purple', href:'games/noun-jewel-heist/' },
-  { title:'Vocabulary Revision', subtitle:'Context Clues', grade:'Grade 1', icon:'⚡', color:'purple', href:'games/vocabulary-revision/' }
+  { title:'Vocabulary Revision', subtitle:'Context Clues', grade:'Grade 1', icon:'⚡', color:'purple', href:'games/vocabulary-revision/' },
+  { title:'Missing Letter Arcade', subtitle:'Complete the Word', grade:'Grade 1', icon:'🟡', color:'purple', href:'games/missing-letter-arcade/' }
 ];
 const grid=document.getElementById('gamesGrid');
 grid.innerHTML=games.map(game=>`<a class="game-card ${game.color}" href="${game.href}"><div class="game-icon">${game.icon}</div><div class="game-info"><span class="available">● AVAILABLE</span><h4>${game.title}</h4><p>${game.subtitle}</p><span class="grade">${game.grade}</span></div><div class="play">PLAY <span>→</span></div></a>`).join('');
