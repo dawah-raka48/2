@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071126">
+<title>Missing Letter Arcade | Grammar Adventure</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="back" href="../../index.html" aria-label="Back to games">← Games</a>
+  <div class="brand"><span class="brand-icon">🟡</span><span>WORD ARCADE</span></div>
+  <button id="soundBtn" class="sound" aria-label="Toggle sound">🔊 Sound</button>
+</header>
+<main class="shell">
+  <section class="intro">
+    <div class="eyebrow">LEVEL 01 • VOCABULARY CHALLENGE</div>
+    <h1>Missing <span>Letter!</span></h1>
+    <p>Choose the missing letter to complete the word.</p>
+  </section>
+  <section class="machine" aria-label="Word game">
+    <div class="machine-head"><span>PLAYER 1</span><span id="progress">WORD 1 / 20</span><span>SCORE <b id="scoreTop">000</b></span></div>
+    <div class="maze">
+      <div class="maze-line line-a"></div><div class="maze-line line-b"></div><div class="maze-line line-c"></div>
+      <div class="dots" aria-hidden="true">·　·　·　·　·　·　·　·　·　·　·　·</div>
+      <div class="word-area">
+        <div class="word-label">COMPLETE THE WORD</div>
+        <div id="word" class="word" aria-live="polite">G O A _</div>
+        <div id="hint" class="hint">A target in a game</div>
+        <div id="feedback" class="feedback" aria-live="polite">Choose the correct letter!</div>
+      </div>
+      <div class="arcade-char" aria-hidden="true">ᗧ</div>
+    </div>
+    <div class="choices" id="choices" aria-label="Letter choices"></div>
+    <div class="machine-foot"><span>⭐ <b id="score">0</b> POINTS</span><span>❤️ STREAK <b id="streak">0</b></span><span>🎯 <b id="answered">0</b> / 20</span></div>
+  </section>
+  <section id="result" class="result" hidden>
+    <div class="trophy">🏆</div><h2>Arcade Champion!</h2><p id="resultText"></p>
+    <button id="again" class="primary">↻ Play Again</button>
+    <a class="secondary" href="../../index.html">Back to all games</a>
+  </section>
+  <p class="tip">💡 Take your time — look carefully at each word!</p>
+</main>
+<script src="script.js"></script>
+</body></html>
