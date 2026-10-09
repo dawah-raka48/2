@@ -1,45 +1,17 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#071126">
-<title>Missing Letter Arcade | Grammar Adventure</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#071126"><title>Missing Letter Maze | Grammar Adventure</title><link rel="stylesheet" href="style.css"></head>
 <body>
-<header class="topbar">
-  <a class="back" href="../../index.html" aria-label="Back to games">← Games</a>
-  <div class="brand"><span class="brand-icon">🟡</span><span>WORD ARCADE</span></div>
-  <button id="soundBtn" class="sound" aria-label="Toggle sound">🔊 Sound</button>
-</header>
+<header class="topbar"><a class="back" href="../../index.html">← Games</a><div class="brand"><span>🟡</span><span>WORD MAZE</span></div><button id="soundBtn" class="sound">🔊 Sound</button></header>
 <main class="shell">
-  <section class="intro">
-    <div class="eyebrow">LEVEL 01 • VOCABULARY CHALLENGE</div>
-    <h1>Missing <span>Letter!</span></h1>
-    <p>Choose the missing letter to complete the word.</p>
-  </section>
-  <section class="machine" aria-label="Word game">
-    <div class="machine-head"><span>PLAYER 1</span><span id="progress">WORD 1 / 20</span><span>SCORE <b id="scoreTop">000</b></span></div>
-    <div class="maze">
-      <div class="maze-line line-a"></div><div class="maze-line line-b"></div><div class="maze-line line-c"></div>
-      <div class="dots" aria-hidden="true">·　·　·　·　·　·　·　·　·　·　·　·</div>
-      <div class="word-area">
-        <div class="word-label">COMPLETE THE WORD</div>
-        <div id="word" class="word" aria-live="polite">G O A _</div>
-        <div id="hint" class="hint">A target in a game</div>
-        <div id="feedback" class="feedback" aria-live="polite">Choose the correct letter!</div>
-      </div>
-      <div class="arcade-char" aria-hidden="true">ᗧ</div>
-    </div>
-    <div class="choices" id="choices" aria-label="Letter choices"></div>
-    <div class="machine-foot"><span>⭐ <b id="score">0</b> POINTS</span><span>❤️ STREAK <b id="streak">0</b></span><span>🎯 <b id="answered">0</b> / 20</span></div>
-  </section>
-  <section id="result" class="result" hidden>
-    <div class="trophy">🏆</div><h2>Arcade Champion!</h2><p id="resultText"></p>
-    <button id="again" class="primary">↻ Play Again</button>
-    <a class="secondary" href="../../index.html">Back to all games</a>
-  </section>
-  <p class="tip">💡 Take your time — look carefully at each word!</p>
-</main>
-<script src="script.js"></script>
-</body></html>
+<section class="intro"><div class="eyebrow">ARCADE MISSION • 10 QUESTIONS</div><h1>Move &amp; <span>Learn!</span></h1><p>Move through the maze. Collect a glowing dot to unlock a word question.</p></section>
+<section class="machine">
+<div class="machine-head"><span>PLAYER 1</span><span id="progress">DOTS 0 / 10</span><span>SCORE <b id="scoreTop">000</b></span></div>
+<div id="maze" class="maze" role="application" aria-label="Maze game board"><div id="board" class="board"></div></div>
+<div class="machine-foot"><span>⭐ <b id="score">0</b> POINTS</span><span>💡 QUESTIONS <b id="answered">0</b> / 10</span><span>🟡 DOTS <b id="dotsLeft">10</b></span></div>
+<div class="controls" aria-label="Movement controls"><button data-dir="up" aria-label="Move up">▲</button><div><button data-dir="left" aria-label="Move left">◀</button><button data-dir="down" aria-label="Move down">▼</button><button data-dir="right" aria-label="Move right">▶</button></div></div>
+<p class="control-tip">Use arrow keys / WASD, swipe the maze, or tap the arrows.</p>
+</section>
+<section id="questionModal" class="overlay" hidden><div class="question-card"><div class="question-top"><span>🧠 WORD CHALLENGE</span><span id="qCount">QUESTION 1 / 10</span></div><h2>Complete the missing letter</h2><div id="word" class="word"></div><p id="hint" class="hint"></p><div id="choices" class="choices"></div><div id="feedback" class="feedback" aria-live="polite">Choose the correct letter!</div></div></section>
+<section id="result" class="result" hidden><div class="trophy">🏆</div><h2>Maze Master!</h2><p id="resultText"></p><button id="again" class="primary">↻ Play Again</button><a class="secondary" href="../../index.html">Back to all games</a></section>
+<p class="tip">🌟 Collect 10 glowing dots and answer 10 questions to finish!</p>
+</main><script src="script.js"></script></body></html>
