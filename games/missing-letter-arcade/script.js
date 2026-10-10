@@ -1,6 +1,6 @@
 'use strict';
 const WORDS=[
-['GOAL','A target in a game'],['GOALIE','The player who guards the goal'],['LEADER','A person who guides a group'],['STANDS','Seats for a crowd at a game'],['ABOARD','On or inside a ship, train, or plane'],['CONDUCTOR','A person who leads an orchestra or checks train tickets'],['FANCY','Decorative or special'],['SPACE','The area beyond Earth'],['FLUFFY','Soft and full of fluff'],['COZY','Warm, comfortable, and snug'],['SUNNY','Bright with sunshine'],['SNOWY','Covered with or full of snow'],['AGREE','To have the same opinion'],['CLUBHOUSE','A building used by a club or team'],['DECORATE','To make something look pretty'],['MEASURE','To find the size or amount of something'],['HAIL','Small balls of ice that fall from clouds'],['LIGHTNING','A bright flash in a storm'],['THUNDER','The loud sound during a storm'],['TORNADO','A powerful spinning column of air']
+['goal','A target in a game'],['goalie','The player who guards the goal'],['leader','A person who guides a group'],['stands','Seats for a crowd at a game'],['aboard','On or inside a ship, train, or plane'],['conductor','A person who leads an orchestra or checks train tickets'],['fancy','Decorative or special'],['space','The area beyond Earth'],['fluffy','Soft and full of fluff'],['cozy','Warm, comfortable, and snug'],['sunny','Bright with sunshine'],['snowy','Covered with or full of snow'],['agree','To have the same opinion'],['clubhouse','A building used by a club or team'],['decorate','To make something look pretty'],['measure','To find the size or amount of something'],['hail','Small balls of ice that fall from clouds'],['lightning','A bright flash in a storm'],['thunder','The loud sound during a storm'],['tornado','A powerful spinning column of air']
 ];
 const MAP=[
 '###############',
@@ -57,7 +57,7 @@ function showQuestion(){
  $('qCount').textContent='QUESTION '+(qIndex+1)+' / 10';
  $('word').innerHTML=[...item.word].map((c,i)=>'<span class="letter '+(i===item.missing?'missing':'')+'">'+(i===item.missing?'_':c)+'</span>').join('');
  $('hint').textContent=item.hint;$('feedback').textContent='Choose the missing letter!';$('feedback').className='feedback';
- const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').filter(c=>c!==item.answer);
+ const letters='abcdefghijklmnopqrstuvwxyz'.split('').filter(c=>c!==item.answer);
  const opts=shuffle([item.answer,...shuffle(letters).slice(0,3)]);
  $('choices').innerHTML=opts.map(c=>'<button type="button" class="choice" data-letter="'+c+'">'+c+'</button>').join('');
  $('choices').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>answer(b.dataset.letter,b),{once:true}));
