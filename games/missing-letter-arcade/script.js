@@ -40,14 +40,15 @@ function setup(){
  let cells=[];MAP.forEach((row,y)=>[...row].forEach((c,x)=>{if(c==='.'&&!(x===1&&y===1))cells.push({x,y})}));orbs=shuffle(cells).slice(0,10);
  $('score').textContent='0000';$('progress').textContent='0 / 10';$('orbs').textContent='10';$('lives').textContent='3';$('startScreen').hidden=false;$('questionModal').hidden=true;$('result').hidden=true;resize();
 }
-function startGame(){if(running)return;running=true;paused=false;$('startScreen').hidden=true;wanted={dx:1,dy:0};player.dx=1;player.dy=0;clearInterval(moveTimer);moveTimer=setInterval(step,240);draw()}
-function setDirection(dx,dy){wanted={dx,dy};if(running&&!paused)step()}
+function startGame(){if(running)return;running=true;paused=false;$('startScreen').hidden=true;player.dx=0;player.dy=0;wanted={dx:0,dy:0};clearInterval(moveTimer);draw()}
+function setDirection(dx,dy){if(!running||paused)return;wanted={dx,dy};step()}
 function step(){
  if(!running||paused)return;
- let tx=player.x+wanted.dx,ty=player.y+wanted.dy;
- if((wanted.dx||wanted.dy)&&!blocked(tx,ty)){player.dx=wanted.dx;player.dy=wanted.dy}
- tx=player.x+player.dx;ty=player.y+player.dy;
- if(!blocked(tx,ty)){player.x=tx;player.y=ty}else{player.dx=0;player.dy=0}
+ const dx=wanted.dx,dy=wanted.dy;
+ if(!dx&&!dy)return;
+ const tx=player.x+dx,ty=player.y+dy;
+ if(blocked(tx,ty)){draw();return}
+ player.dx=dx;player.dy=dy;player.x=tx;player.y=ty;
  const idx=orbs.findIndex(o=>o.x===player.x&&o.y===player.y);
  if(idx!==-1){orbs.splice(idx,1);draw();showQuestion();return}
  draw();
