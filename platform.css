@@ -9,3 +9,66 @@
 @media(max-width:850px){.hub-top{padding:0 22px}.hub-main{padding:25px 22px}.welcome{padding:36px 32px;min-height:330px}.hero-art{right:-3%;transform:translateY(-50%) scale(.82);transform-origin:center right}.welcome-copy{max-width:55%}.welcome h1{font-size:40px}.hero-index{left:32px}.games-grid{gap:13px}.game-card{grid-template-columns:38% 1fr;min-height:218px}.card-art{min-height:218px}.game-info{padding:16px 13px 14px}.game-icon{width:82px;height:82px;font-size:48px;border-radius:24px}.game-description{font-size:10px}}
 @media(max-width:620px){.hub-top{height:auto;min-height:72px;padding:12px 15px;gap:8px;flex-wrap:wrap}.brand{gap:8px}.brand-mark{width:38px;height:38px;border-radius:12px;font-size:24px}.brand-copy strong{font-size:15px}.brand-copy small{font-size:7px;letter-spacing:1.5px}.teacher-chip{margin:0 0 0 auto;gap:6px}.teacher-avatar{width:30px;height:30px;font-size:10px}.teacher-chip b{font-size:9px}.teacher-chip small{font-size:8px}.hub-actions{display:none}.hub-main{padding:16px 12px 22px}.welcome{min-height:340px;padding:29px 22px 46px;border-radius:21px;align-items:flex-start}.welcome-copy{max-width:100%;width:100%}.eyebrow{font-size:8px;letter-spacing:1.4px}.welcome h1{font-size:clamp(31px,9vw,42px);letter-spacing:-1.5px;margin:17px 0 10px}.welcome-copy>p{max-width:245px;font-size:12px;line-height:1.6;margin-bottom:17px}.scroll-cta{padding:9px 12px;font-size:11px}.hero-art{right:-90px;top:auto;bottom:-65px;transform:scale(.56);transform-origin:bottom right;opacity:.78}.hero-index{left:22px;bottom:14px}.hero-index strong{font-size:11px}.hero-index span{font-size:7px}.games-section{padding-top:30px}.section-heading{align-items:center;margin-bottom:15px}.section-heading h2{font-size:25px;margin:6px 0 4px}.section-heading p{font-size:10px;max-width:230px;line-height:1.5}.section-kicker{font-size:7px;letter-spacing:1.4px}.game-count{padding:7px 8px;gap:6px}.game-count strong{font-size:22px}.game-count span{font-size:7px}.games-grid{grid-template-columns:1fr;gap:11px}.game-card{grid-template-columns:118px minmax(0,1fr);min-height:176px;border-radius:15px}.card-art{min-height:176px}.card-number{left:10px;top:10px;font-size:8px}.card-tag{left:9px;bottom:10px;font-size:7px;padding:4px 5px}.art-halo{width:94px;height:94px;box-shadow:0 0 0 12px #ffffff1c,0 0 0 25px #ffffff16}.game-icon{width:69px;height:69px;border-radius:21px;font-size:40px}.art-star{font-size:21px}.star-one{right:12%;top:18%}.star-two{left:12%;top:35%;font-size:16px}.game-info{padding:13px 12px 11px}.card-status{font-size:7px;letter-spacing:.5px}.game-info h3{font-size:16px;margin:10px 0 3px}.game-subtitle{font-size:10px}.game-description{font-size:10px;line-height:1.4;margin:8px 0 10px}.grade{font-size:7px;padding:5px 6px}.play{font-size:10px;gap:6px}.play b{width:24px;height:24px}.bottom-note{margin-top:17px;padding:13px;gap:10px;border-radius:13px}.note-icon{width:34px;height:34px;font-size:20px}.bottom-note strong{font-size:10px}.bottom-note p{font-size:9px;line-height:1.5}.note-stars{font-size:13px;letter-spacing:0}footer{padding:14px 14px 20px;font-size:7px;letter-spacing:.8px}footer span+span{font-size:8px}.install-card{padding:23px 18px}.install-card h3{font-size:21px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+/* Refined compact mobile layout */
+@media(max-width:620px){
+  .hub-top{min-height:64px;padding:9px 13px;flex-wrap:nowrap;gap:8px}
+  .brand{gap:8px;min-width:0}
+  .brand-mark{width:35px;height:35px;flex:none;border-radius:11px;font-size:22px}
+  .brand-copy strong{font-size:14px;letter-spacing:-.45px;white-space:nowrap}
+  .brand-copy small{font-size:6.5px;letter-spacing:1.25px}
+  .teacher-chip{margin-left:auto;flex:none;gap:6px}
+  .teacher-avatar{width:27px;height:27px;font-size:9px}
+  .teacher-chip b{font-size:8px;white-space:nowrap}
+  .teacher-chip small{font-size:7px;white-space:nowrap}
+  .hub-main{padding:13px 12px 20px}
+  .welcome{min-height:290px;padding:27px 20px 40px;border-radius:19px}
+  .welcome-copy{width:100%;max-width:100%}
+  .eyebrow{font-size:8px;letter-spacing:1.15px}
+  .welcome h1{font-size:clamp(29px,7.8vw,36px);line-height:1.13;letter-spacing:-1.4px;margin:17px 0 10px}
+  .welcome-copy>p{max-width:260px;font-size:11px;line-height:1.55;margin-bottom:16px}
+  .scroll-cta{padding:9px 11px;font-size:10px;gap:12px}
+  .hero-art{right:-52px;bottom:-79px;top:auto;transform:scale(.48);transform-origin:bottom right;opacity:.62}
+  .hero-index{left:20px;bottom:12px;gap:7px}
+  .hero-index strong{font-size:10px}
+  .hero-index span{font-size:6.5px;letter-spacing:.8px}
+  .games-section{padding-top:27px}
+  .section-heading{margin-bottom:13px;gap:8px}
+  .section-heading h2{font-size:23px;letter-spacing:-.7px;margin:5px 0 3px}
+  .section-heading p{font-size:10px;max-width:220px}
+  .section-kicker{font-size:7px;letter-spacing:1px}
+  .game-count{padding:6px 8px;border-radius:10px}
+  .game-count strong{font-size:20px}
+  .game-count span{font-size:6px}
+  .games-grid{grid-template-columns:1fr;gap:10px}
+  .game-card{grid-template-columns:88px minmax(0,1fr);min-height:139px;border-radius:13px}
+  .card-art{min-height:139px}
+  .card-number{left:8px;top:8px;font-size:7px}
+  .card-tag{left:7px;bottom:8px;font-size:6px;padding:4px 5px;letter-spacing:.5px}
+  .art-halo{width:67px;height:67px;box-shadow:0 0 0 9px #ffffff1c,0 0 0 18px #ffffff16}
+  .game-icon{width:53px;height:53px;border-radius:16px;font-size:31px}
+  .art-star{font-size:16px}.star-one{right:10%;top:15%}.star-two{left:9%;top:34%;font-size:12px}
+  .game-info{padding:10px 10px 9px}
+  .card-status{font-size:6.5px;letter-spacing:.35px;gap:5px}
+  .status-dot{width:5px;height:5px}
+  .game-info h3{font-size:14px;line-height:1.2;margin:8px 0 3px;letter-spacing:-.3px}
+  .game-subtitle{font-size:9px}
+  .game-description{font-size:9px;line-height:1.35;margin:6px 0 8px}
+  .card-bottom{gap:5px}
+  .grade{font-size:6px;padding:4px 5px}
+  .play{font-size:9px;gap:5px}
+  .play b{width:22px;height:22px;border-radius:7px;font-size:12px}
+  .bottom-note{margin-top:14px;padding:11px;gap:8px}
+  .note-icon{width:30px;height:30px;font-size:17px}
+  .bottom-note strong{font-size:9px}
+  .bottom-note p{font-size:8px}
+  .note-stars{font-size:11px}
+  footer{padding:12px 12px 17px;font-size:6.5px}
+}
+@media(max-width:380px){
+ .teacher-chip{display:none}
+ .welcome{min-height:278px}
+ .welcome h1{font-size:29px}
+ .game-card{grid-template-columns:80px minmax(0,1fr)}
+ .game-info h3{font-size:13px}
+ .game-description{font-size:8px}
+}
