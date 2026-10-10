@@ -21,7 +21,7 @@ const $=id=>document.getElementById(id);
 const canvas=$('game');
 const ctx=canvas.getContext('2d');
 let tile=20, player={x:1,y:1,dx:0,dy:0}, wanted={dx:0,dy:0};
-let orbs=[], questions=[], qIndex=0, score=0, running=false, paused=false, moveTimer=null, soundOn=true;
+let orbs=[], questions=[], qIndex=0, score=0, running=false, paused=false, moveTimer=null, soundOn=true, lastInputAt=0;
 function shuffle(a){return a.slice().sort(()=>Math.random()-.5)}
 function blocked(x,y){return y<0||y>=MAP.length||x<0||x>=MAP[y].length||MAP[y][x]==='#'}
 function resize(){const size=Math.max(260,Math.min(560,canvas.parentElement.clientWidth-4));canvas.width=size;canvas.height=Math.round(size*MAP.length/MAP[0].length);tile=canvas.width/MAP[0].length;draw()}
@@ -36,12 +36,12 @@ function draw(){
  const a=Math.atan2(player.dy,player.dx),mouth=.25+Math.sin(Date.now()/100)*.12;ctx.beginPath();ctx.fillStyle='#020611';ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a+mouth,a+Math.PI*2-mouth);ctx.closePath();ctx.fill();
 }
 function setup(){
- clearInterval(moveTimer);running=false;paused=false;player={x:1,y:1,dx:0,dy:0};wanted={dx:0,dy:0};questions=shuffle(WORDS).slice(0,10).map(([word,hint])=>({word,hint}));qIndex=0;score=0;
+ clearInterval(moveTimer);lastInputAt=0;running=false;paused=false;player={x:1,y:1,dx:0,dy:0};wanted={dx:0,dy:0};questions=shuffle(WORDS).slice(0,10).map(([word,hint])=>({word,hint}));qIndex=0;score=0;
  let cells=[];MAP.forEach((row,y)=>[...row].forEach((c,x)=>{if(c==='.'&&!(x===1&&y===1))cells.push({x,y})}));orbs=shuffle(cells).slice(0,10);
  $('score').textContent='0000';$('progress').textContent='0 / 10';$('orbs').textContent='10';$('lives').textContent='3';$('startScreen').hidden=false;$('questionModal').hidden=true;$('result').hidden=true;resize();
 }
 function startGame(){if(running)return;running=true;paused=false;$('startScreen').hidden=true;player.dx=0;player.dy=0;wanted={dx:0,dy:0};clearInterval(moveTimer);draw()}
-function setDirection(dx,dy){if(!running||paused)return;wanted={dx,dy};step()}
+function setDirection(dx,dy){if(!running||paused)return;const now=Date.now();if(now-lastInputAt<280)return;lastInputAt=now;wanted={dx,dy};step()}
 function step(){
  if(!running||paused)return;
  const dx=wanted.dx,dy=wanted.dy;
