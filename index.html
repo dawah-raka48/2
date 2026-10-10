@@ -1,53 +1,42 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Grammar Adventure — Learning Arcade</title>
-<link rel="stylesheet" href="platform.css">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon.svg">
-<meta name="theme-color" content="#10152b">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Grammar Adventure">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Grammar Adventure | Learning Arcade</title><link rel="stylesheet" href="platform.css"><link rel="manifest" href="manifest.json"><link rel="icon" href="icon.svg">
+<meta name="theme-color" content="#06153e"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="Grammar Adventure">
 </head>
 <body>
-<div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div>
-<header class="hub-top">
-  <a class="brand" href="./" aria-label="Grammar Adventure home"><span class="brand-mark">✦</span><span class="brand-copy"><strong>Grammar<span>Adventure</span></strong><small>LEARN • PLAY • GROW</small></span></a>
-  <div class="teacher-chip"><span class="teacher-avatar">SG</span><span><b>Ms. Samar Gomaa</b><small>Grade 1 Learning Hub</small></span></div>
-  <div class="hub-actions"><button id="installBtn" class="install-btn" type="button"><span>＋</span> Install app</button></div>
+<header class="site-header">
+ <a class="brand" href="./"><span class="brand-gamepad">🎮</span><span class="brand-text"><strong>Grammar <em>Adventure</em></strong><small>LEARN · PLAY · GROW</small></span></a>
+ <div class="header-right"><button id="installBtn" class="install-btn">＋ Install app</button><div class="teacher"><span class="teacher-avatar">SG</span><span><b>Ms. Samar Gomaa</b><small>Grade 1 Learning Hub</small></span></div></div>
 </header>
-<main class="hub-main">
-  <section class="welcome">
-    <div class="welcome-copy"><div class="eyebrow"><span class="live-dot"></span> YOUR LEARNING ARCADE</div><h1>Big adventures.<br><span>Brilliant little minds.</span></h1><p>Pick a game, explore something new, and let the learning begin.</p><a class="scroll-cta" href="#gamesGrid">Explore games <span>↓</span></a></div>
-    <div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="hero-spark spark-a">✦</div><div class="hero-spark spark-b">✧</div><div class="hero-letter letter-a">A</div><div class="hero-letter letter-b">Z</div><div class="hero-star">★</div><div class="hero-planet"></div><div class="hero-book">📚</div><div class="hero-pencil">✎</div><div class="hero-caption">READY, SET, LEARN!</div></div>
-    <div class="hero-index"><strong>01</strong><span>Curiosity<br>starts here</span></div>
-  </section>
-  <section class="games-section">
-    <div class="section-heading"><div><div class="section-kicker">CHOOSE YOUR CHALLENGE</div><h2>Explore the games</h2><p>Four ways to make learning feel like play.</p></div><div class="game-count"><strong id="totalGames">04</strong><span>GAMES<br>READY</span></div></div>
-    <div id="gamesGrid" class="games-grid"></div>
-  </section>
-  <section class="bottom-note"><div class="note-icon">✦</div><div><strong>Every game is a new adventure.</strong><p>Take your time, try your best, and celebrate every little win.</p></div><span class="note-stars">✧　✦　✧</span></section>
+<main class="page">
+ <section class="hero">
+  <div class="hero-copy"><span class="hero-kicker"><i></i> WELCOME TO YOUR</span><h1>LEARNING<br><span>ARCADE</span></h1><p>Choose a game and start your adventure!</p><a href="#games" class="hero-cta">Explore games <b>↓</b></a></div>
+  <div class="arcade-art" aria-hidden="true"><div class="maze-lines"></div><span class="pixel-dot d1"></span><span class="pixel-dot d2"></span><span class="pixel-dot d3"></span><span class="pixel-dot d4"></span><span class="hero-ghost">👾</span><div class="pacman"></div><span class="hero-star">✦</span><span class="hero-star s2">✧</span><div class="hero-orb"></div></div>
+  <div class="hero-bottom"><b>01</b><span>CURIOSITY<br>STARTS HERE</span></div>
+ </section>
+ <section id="games" class="games-section">
+  <div class="section-heading"><div><span class="section-kicker">CHOOSE YOUR CHALLENGE</span><h2>Explore the games</h2><p>Four ways to make learning feel like play.</p></div><div class="count-box"><b id="totalGames">04</b><span>GAMES<br>READY</span></div></div>
+  <div id="gamesGrid" class="games-grid"></div>
+ </section>
+ <footer><span>GRAMMAR ADVENTURE</span><span>Made for curious minds <b>♥</b></span></footer>
 </main>
-<footer><span>GRAMMAR ADVENTURE</span><span>Made for curious minds <b>♥</b></span></footer>
-<div id="installHelp" class="install-help" hidden><div class="install-card"><button id="closeInstall" class="close-install" type="button" aria-label="Close">×</button><div class="modal-symbol">＋</div><h3>Take your games anywhere</h3><p class="install-intro">Add Grammar Adventure to your home screen for quick access.</p><div id="androidHelp"><b>Android</b><span>Open this site in Chrome, tap ⋮, then choose <b>Install app</b> or <b>Add to Home screen</b>.</span></div><div id="iosHelp"><b>iPhone / iPad</b><span>Open in Safari → Share ↗ → <b>Add to Home Screen</b> → Add.</span></div><div id="desktopHelp"><b>Computer</b><span>Open in Chrome or Edge and select the install icon in the address bar, if available.</span></div></div></div>
+<div id="installHelp" class="install-help" hidden><div class="install-card"><button id="closeInstall" class="close-install">×</button><div class="install-icon">🎮</div><h3>Take your games anywhere</h3><p>Add Grammar Adventure to your home screen for quick access.</p><div><b>iPhone / iPad</b><span>Open in Safari → Share ↗ → Add to Home Screen → Add.</span></div><div><b>Android</b><span>Open in Chrome, tap ⋮, then choose Install app or Add to Home screen.</span></div><div><b>Computer</b><span>Use the install icon in Chrome or Edge, if available.</span></div></div></div>
 <script>
 const games=[
- {title:'Capital Letter Maze',subtitle:'Days & Months',description:'Find your way through the letter maze.',tag:'LETTERS',icon:'🔤',theme:'violet',number:'01',href:'games/capital-letter-maze/'},
- {title:'Singular and Plural',subtitle:'Grammar Adventure',description:'Match words and master noun forms.',tag:'GRAMMAR',icon:'💎',theme:'mint',number:'02',href:'games/noun-jewel-heist/'},
- {title:'Vocabulary Revision',subtitle:'Context Clues',description:'Use clues to unlock the right word.',tag:'VOCABULARY',icon:'⚡',theme:'coral',number:'03',href:'games/vocabulary-revision/'},
- {title:'Missing Letter Arcade',subtitle:'Complete the Word',description:'Collect orbs and complete each word.',tag:'ARCADE',icon:'🟡',theme:'blue',number:'04',href:'games/missing-letter-arcade/'}
+ {title:'Missing Letter Arcade',subtitle:'Complete the Word',description:'Move, collect, and complete the missing letter!',tag:'VOCABULARY',icon:'🟡',theme:'blue',number:'01',href:'games/missing-letter-arcade/'},
+ {title:'Capital Letter Maze',subtitle:'Days & Months',description:'Find the correct capital letters and reach the goal!',tag:'LETTERS',icon:'🔤',theme:'mint',number:'02',href:'games/capital-letter-maze/'},
+ {title:'Singular and Plural',subtitle:'Grammar Adventure',description:'Choose the correct form and collect the items!',tag:'GRAMMAR',icon:'💎',theme:'orange',number:'03',href:'games/noun-jewel-heist/'},
+ {title:'Vocabulary Revision',subtitle:'Context Clues',description:'Use clues, find the answer, and level up!',tag:'VOCABULARY',icon:'⚡',theme:'violet',number:'04',href:'games/vocabulary-revision/'}
 ];
 const grid=document.getElementById('gamesGrid');
-grid.innerHTML=games.map(g=>`<a class="game-card ${g.theme}" href="${g.href}"><div class="card-art"><span class="card-number">${g.number}</span><span class="card-tag">${g.tag}</span><div class="art-halo"></div><div class="game-icon">${g.icon}</div><span class="art-star star-one">✦</span><span class="art-star star-two">✧</span></div><div class="game-info"><div class="card-status"><span class="status-dot"></span> READY TO PLAY</div><h3>${g.title}</h3><p class="game-subtitle">${g.subtitle}</p><p class="game-description">${g.description}</p><div class="card-bottom"><span class="grade">GRADE 1</span><span class="play">Play game <b>↗</b></span></div></div></a>`).join('');
+grid.innerHTML=games.map(g=>`<a class="game-card ${g.theme}" href="${g.href}"><div class="card-art"><span class="card-number">${g.number}</span><span class="card-tag">${g.tag}</span><div class="art-orbit"></div><div class="art-emoji">${g.icon}</div><span class="art-spark spark-one">✦</span><span class="art-spark spark-two">✧</span></div><div class="card-info"><span class="card-ready"><i></i> READY TO PLAY</span><h3>${g.title}</h3><p class="card-subtitle">${g.subtitle}</p><p class="card-description">${g.description}</p><div class="card-bottom"><span class="grade-pill">GRADE 1</span><span class="play-pill">Play Game <b>→</b></span></div></div></a>`).join('');
 document.getElementById('totalGames').textContent=String(games.length).padStart(2,'0');
-if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));}
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 const installBtn=document.getElementById('installBtn'),installHelp=document.getElementById('installHelp'),closeInstall=document.getElementById('closeInstall');let deferredPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;});
-installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;return;}installHelp.hidden=false;});
+installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;}else installHelp.hidden=false;});
 closeInstall.addEventListener('click',()=>installHelp.hidden=true);installHelp.addEventListener('click',e=>{if(e.target===installHelp)installHelp.hidden=true;});
 </script>
 </body></html>
